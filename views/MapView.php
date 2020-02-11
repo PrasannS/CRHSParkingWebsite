@@ -5,14 +5,20 @@ class MapView extends StudentsPageView
 
   protected function renderBody()
   {
-    //$spots = (new MapDatabaseModel())->getAllFromLot($_GET['do']);
+    $spots = (new MapDatabaseModel())->getAllFromLot($_GET['do']);
     ?>
     <div class="defaults-page">
       <div class="defaults-container">
         <h3>Senior Lot</h3>
         <center>
+          <div style="overflow: auto;">
           <div class="map-<?= $_GET['do']?>-container">
-            <!--
+            <div class="map-hover" onclick="gotohub()">
+              <div class="map-back">
+                <img src="/images/back.png" width="auto" height="auto">
+                Back
+              </div>
+            </div>
             <?php
               foreach($spots as $spot)
               {
@@ -26,23 +32,19 @@ class MapView extends StudentsPageView
                 </div>
             <?php
                 }
-                else()
+                else
                 {
             ?>
-              <div class="map-car-<?= $spot['color']?>"  style="top:<?= $spot['pos_y']?>%;left:<?= $spot['pos_x']?>%;width:<?= $spot['width']?>%;height:<?= $spot['height']?>%;"></div>
+              <img src="/images/cars/<?= $spot['color']?>car.png" class="map-car"  style="top:<?= $spot['pos_y']?>%;left:<?= $spot['pos_x']?>%;width:<?= $spot['width']+.4?>%;height:<?= $spot['height']+.2?>%;"></div>
             <?php
                 }
               }
-<<<<<<< HEAD
-            ?>-->
-            <div class="map-button" style="top:51%;left:50.6%;" id="1623"><div class="map-popup"><div>1623</div></div></div> <!--this is what an empty spot would look like-->
-=======
             ?>
             <!--
             <div class="map-button" style="top:51%;left:55.6%;" id="1623"><div class="map-popup"><div>1623</div></div></div> this is what an empty spot would look like
             -->
->>>>>>> 0bd9502cc3e985e7e398efc9bf3833fecc76ce8f
           </div>
+        </div>
         </center>
       </div>
     </div>
